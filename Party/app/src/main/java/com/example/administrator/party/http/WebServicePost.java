@@ -34,14 +34,17 @@ public class WebServicePost {
     public static String executeHttpPost(String username, String password)
     {
         try {
-            String path = "http://" + IP + "ServerDemo/login";
+            String path = "http://" + IP + "/ServerDemo/register";
 
             //发送指令和信息
             Map<String, String> params = new HashMap<String, String>();
             params.put("username",username);
             params.put("password",password);
+            System.out.println(path);
+            System.out.println(params);
 
             return sendPOSTRequest(path, params, "UTF-8");
+
         }catch (Exception e)
         {
             e.printStackTrace();
@@ -53,7 +56,7 @@ public class WebServicePost {
     private static String sendPOSTRequest(String path, Map<String,String>params, String encoding)
         throws Exception{
         List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-        if (pairs != null && !pairs.isEmpty())
+        if (params != null && !params.isEmpty())
         {
             for (Map.Entry<String,String>entry : params.entrySet())
             {
@@ -62,6 +65,8 @@ public class WebServicePost {
         }
 
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(pairs, encoding);
+        System.out.println("resend:"+path);
+        System.out.print("pairs:"+pairs);
 
         HttpPost post = new HttpPost(path);
         post.setEntity(entity);

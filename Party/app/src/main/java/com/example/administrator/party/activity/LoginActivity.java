@@ -83,16 +83,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     break;
                 }
 
-                //提示框
-                dialog = new ProgressDialog(this);
-                dialog.setTitle("提示框");
-                dialog.setMessage("正在登录,请稍后...");
-                dialog.setCancelable(false);
-                dialog.show();
-                //创建子线程，分别进行Get和Post传输
-                new Thread(new MyThread()).start();
-                checkUser();
-                break;
+                if (checkUser() == true)
+                {
+                    //提示框
+                    dialog = new ProgressDialog(this);
+                    dialog.setTitle("提示框");
+                    dialog.setMessage("正在登录,请稍后...");
+                    dialog.setCancelable(false);
+                    dialog.show();
+                    //创建子线程，分别进行Get和Post传输
+                    new Thread(new MyThread()).start();
+                    //checkUser();
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+
             case R.id.tReg:
                 Toast.makeText(getApplicationContext(),"点击了注册链接",Toast.LENGTH_SHORT).show();
                 Intent signup = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -125,27 +133,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     }
 
     //验证用户账户
-    private void checkUser()
+    private Boolean checkUser()
     {
         if (username.getText().toString().isEmpty())
         {
             Toast.makeText(LoginActivity.this,"登录用户不能为空",Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
 
         if (password.getText().toString().isEmpty())
         {
             Toast.makeText(LoginActivity.this,"登录密码不能为空",Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
-
-        if (!info.isEmpty())
-        {
-            Intent First = new Intent(LoginActivity.this, FirstPage.class);
-            startActivity(First);
-            return;
-        }
+        return true;
     }
-
-
 }

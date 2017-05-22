@@ -52,6 +52,7 @@ public class WebServiceGet {
                 }catch (Exception e)
                 {
                     e.printStackTrace();
+
                 }
             }
         }
