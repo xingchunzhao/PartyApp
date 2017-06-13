@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/shares_code"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/title_bg"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="代码"
+            android:textSize="@dimen/form_textsize"/>
+
+        <TextView
+            android:id="@+id/new_prices"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/form_item"
+            android:background="@color/title_bg"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="最新价"
+            android:textSize="@dimen/form_textsize" />
+
+        <TextView
+            android:id="@+id/lmr"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/form_item"
+            android:background="@color/title_bg"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="量比"
+            android:textSize="@dimen/form_textsize" />
+
+        <TextView
+            android:id="@+id/commitee"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/form_item"
+            android:background="@color/title_bg"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="委比"
+            android:textSize="@dimen/form_textsize" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/title_bg"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="欢迎光临"
+            android:gravity="center"
+            android:textSize="@dimen/form_textsize"/>
+
+        <ImageButton
+            android:id="@+id/add_btn"
+            android:src="@mipmap/add"
+            android:scaleType="fitEnd"
+            android:layout_height="@dimen/title_height"
+            android:layout_width="@dimen/title_height"
+            android:paddingRight="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:background="@color/title_bg"/>
+        <SearchView
+            android:id="@+id/search_btn"
+            android:layout_width="@dimen/title_height"
+            android:layout_height="@dimen/title_height"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/list_name"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="小猪"
+            android:textColor="#0000FF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/list_phone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="13798989898"
+            android:textColor="#EA5C4D"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

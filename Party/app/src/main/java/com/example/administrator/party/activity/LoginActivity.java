@@ -1,14 +1,8 @@
 package com.example.administrator.party.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v4.net.ConnectivityManagerCompat;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +12,10 @@ import android.widget.TextView;
 import com.example.administrator.party.BaseActivity;
 import com.example.administrator.party.R;
 import com.example.administrator.party.http.WebServiceGet;
-import com.example.administrator.party.pages.FirstPage;
+import com.example.administrator.party.pages.Navigation;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
-
 
 
 /**
@@ -45,7 +37,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     //创建等待框
     private ProgressDialog dialog;
     //返回数据
-    private String info;
+    private String info = "100";
     //返回主线程更新数据
     private static Handler handler = new Handler() ;
     @Override
@@ -79,21 +71,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     Toast toast = Toast.makeText(LoginActivity.this,"网络连接",Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER,0,0);
                     toast.show();
-                    //Toast.makeText(getApplicationContext(),"网络正在连接",Toast.LENGTH_SHORT).show();
                     break;
                 }
 
-                if (checkUser() == true)
-                {
+                if (checkUser() == true) {
                     //提示框
                     dialog = new ProgressDialog(this);
                     dialog.setTitle("提示框");
                     dialog.setMessage("正在登录,请稍后...");
                     dialog.setCancelable(false);
                     dialog.show();
+
+                    System.out.println("进入线程");
                     //创建子线程，分别进行Get和Post传输
                     new Thread(new MyThread()).start();
-                    //checkUser();
                     break;
                 }
                 else
@@ -120,13 +111,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         public void run()
         {
             info = WebServiceGet.executeHttpGet(username.getText().toString(),password.getText().toString());
+            System.out.print("info信息1:" + info);
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    //infotv.setText(info);
-                    Toast.makeText(LoginActivity.this,info,Toast.LENGTH_SHORT).show();
-                    System.out.print(info);
+                    //Toast.makeText(LoginActivity.this,info,Toast.LENGTH_SHORT).show();
+                    System.out.print("info信息2:" + info);
+                    //System.out.println("len(info):" + info.length());
                     dialog.dismiss();
+                    if ("{flag=true}".equals(info))
+                    {
+                        Intent it = new Intent(LoginActivity.this, Navigation.class);
+                        startActivity(it);
+                        System.out.println("进入首页");
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginActivity.this,"用户名或者密码错误",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -148,4 +150,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         }
         return true;
     }
+
+    //接受servelet返回来的信息
+
 }

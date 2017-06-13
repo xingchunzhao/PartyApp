@@ -3,6 +3,7 @@
     package="com.example.administrator.party">
     <uses-permission  android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -10,6 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/app_name">
@@ -19,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegisterActivity"></activity>
-        <activity android:name=".pages.FirstPage"></activity>
+        <activity android:name=".pages.Navigation"></activity>
 
     </application>
 

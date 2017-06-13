@@ -1,22 +1,13 @@
-package com.example.administrator.party.http;
-
-import android.graphics.CornerPathEffect;
-import android.view.inputmethod.CorrectionInfo;
+package com.example.administrator.party.pages.CodePage;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.DefaultBHttpClientConnection;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.protocol.UriHttpRequestHandlerMapper;
-import org.apache.http.util.EntityUtils;
-import org.w3c.dom.Entity;
-import org.w3c.dom.NamedNodeMap;
 
 import java.io.InputStream;
 import java.util.ArrayList;

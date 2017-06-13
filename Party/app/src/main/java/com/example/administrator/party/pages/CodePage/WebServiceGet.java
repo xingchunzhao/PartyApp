@@ -1,13 +1,7 @@
-package com.example.administrator.party.http;
+package com.example.administrator.party.pages.CodePage;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.util.EntityUtils;
-
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -23,7 +17,7 @@ public class WebServiceGet {
 
     private static String IP = "192.168.1.166:9090";
     //通过Get方式获取HTTP服务器数据
-    public static String executeHttpGet(String username, String password)
+    public static String executeHttpGet(String date)
     {
 
         HttpURLConnection conn = null;
@@ -53,7 +47,7 @@ public class WebServiceGet {
             //用户名，密码
             //URL地址
             String path = "http://"+ IP + "/ServerDemo/login";
-            path = path + "?username=" + username + "&password=" + password;
+            path = path + "?date=" + date;
             System.out.println(path);
 
 

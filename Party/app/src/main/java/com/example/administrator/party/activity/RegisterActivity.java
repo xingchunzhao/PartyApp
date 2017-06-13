@@ -1,10 +1,7 @@
 package com.example.administrator.party.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -15,9 +12,8 @@ import android.widget.Toast;
 
 import com.example.administrator.party.BaseActivity;
 import com.example.administrator.party.R;
-import com.example.administrator.party.http.WebServiceGet;
 import com.example.administrator.party.http.WebServicePost;
-import com.example.administrator.party.pages.FirstPage;
+import com.example.administrator.party.pages.Navigation;
 
 /**
  * Created by Administrator on 2017/5/17.
@@ -71,6 +67,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     regdialog.setMessage("正在上传,请稍后...");
                     regdialog.setCancelable(false);
                     regdialog.show();
+
                     //创建子线程，分别进行Get和Post传输
                     new Thread(new MyRegThread()).start();
                     break;
@@ -85,16 +82,24 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         @Override
         public void run()
         {
-            System.out.println(Name.getText().toString());
-            System.out.println(Pass.getText().toString());
             reginfo = WebServicePost.executeHttpPost(Name.getText().toString(),Pass.getText().toString());
             reghandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    //infotv.setText(info);
                     Toast.makeText(RegisterActivity.this,reginfo,Toast.LENGTH_SHORT).show();
                     System.out.print(reginfo);
+                    //System.out.println("len(reginfo)"+reginfo.length());
                     regdialog.dismiss();
+                    if ("{flag=true}".equals(reginfo))
+                    {
+                        Intent it = new Intent(RegisterActivity.this, Navigation.class);
+                        startActivity(it);
+                        System.out.println("进入首页");
+                    }
+                    else
+                    {
+                        Toast.makeText(RegisterActivity.this,"用户名已存在",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

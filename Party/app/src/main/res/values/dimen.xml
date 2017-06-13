@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="imagesize">200dp</dimen>
+    <dimen name="form_textsize">16sp</dimen>
+    <dimen name="form_item">50dp</dimen>
+
+    <!-- 控件宽高 -->
+    <dimen name="title_height">50dp</dimen>
+    <!-- 标题栏高度 -->
+    <dimen name="head_size">30dp</dimen>
+    <!-- 头像的宽高 -->
+    <dimen name="search_size">80dp</dimen>
+</resources>
